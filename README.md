@@ -1,0 +1,78 @@
+KRDeviceType
+===============
+
+KRDeviceType is a simple class written in Swift that helps to get type of iOS device for layout purposes.
+
+
+## Installation
+####CocoaPods
+
+Just add `pod 'KRDeviceType'` to your Podfile and run `pod install` in Terminal from your project folder.
+
+Write `import KRDeviceType` in files where you need to use KRDeviceType. 
+
+
+## How to use
+KRDeviceType should be used only for layout purposes. For example, sometimes you need set different constraints for old devices which screen size doesn't meet requirements of your design project. KRDeviceType class get info about screen size and use this information to check current device type. Don't use this class for accurate detecting of your device type (for example you may wish to check if you device is accurate iPhone 5s);
+
+
+### Operator ==
+
+To get current device type you can use == operator of KRDevice with DeviceType enumeration.
+
+For example, if you want to check is current device is iPhone you can do it in next way:
+
+```swift
+if KRDeviceType() == .iPhone {
+    // Perform appropiate operations
+}
+```
+
+If you wish to check if current device is 4.7 inches iPhone (iPhone 6 or iPhone 6s or iPhone 7):
+```swift
+if KRDeviceType() == .iPhone6 {
+    // Perform appropiate operations
+}
+```
+
+### Static variables
+To get current device type you can use one of next static variables:
+
+```swift
+static var isiPhone : Bool // return true if device is iPhone
+static var isiPad : Bool // return true if device is iPad
+
+// get device type by checking its screen size
+static var isiPhone4s : Bool // iPhone 4s or iPhone 4
+static var isiPhone5 : Bool // iPhone 5 or iPhone 5s or iPhone SE
+static var isiPhone6 : Bool // iPhone 6 or iPhone 6s or iPhone 7
+static var isiPhone6Plus : Bool // iPhone 6 Plus or iPhone 6s Plus or iPhone 7s Plus
+
+static var isiPad2 : Bool // iPad 2
+static var isiPadMiniOrAir : Bool  // iPad Mini or iPad Retina or iPad Air or iPad Air 2 or iPad Pro 9.7
+static var isiPadPro : Bool // iPad Pro 12.9
+```
+For example:
+
+```swift
+if KRDeviceType.isiPad {
+    // Perform appropiate operations
+} else { // iPhone
+    // Perform appropiate operations
+}
+```
+
+## Requirements
+
+* iOS 8.0 and above
+* XCode 7+
+
+## License
+
+KRDeviceType is released under the MIT license. See LICENSE for details.
+
+## Contact
+
+Any suggestion or question? Please create a Github issue or reach me out.
+
+[LinkedIn](https://www.linkedin.com/in/julian-drapaylo)
