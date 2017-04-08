@@ -44,7 +44,7 @@ if KRDeviceType() <= .iPhone5 {   //iPhone 5/5s/SE of iPhone 4s
 ```
 
 ```swift
-if KRDeviceType() >= .iPhone6Plus {   //iPhone 5/5s/SE of iPhone 4s
+if KRDeviceType() >= .iPhone6Plus {   //iPhone 6 Plus/ 6s Plus/ 7 Plus or greater
 // Perform appropiate operations for 3x scale devices (not only iPhone 6Plus, but possibly future devices with higher resolutions screens)
 }
 ```
