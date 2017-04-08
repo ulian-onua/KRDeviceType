@@ -25,6 +25,32 @@ enum DeviceType : String {
 
 
 class KRDeviceType {
+    
+    fileprivate static let devices : [DeviceType : CGSize] = [
+        .iPhone4s : CGSize.init(width: 320.0, height: 480.0),
+        .iPhone5 : CGSize.init(width: 320.0, height: 568.0),
+        .iPhone6 : CGSize.init(width: 375.0, height: 667.0),
+        .iPhone6Plus : CGSize.init(width: 414.0, height: 736.0),
+        .iPad2 : CGSize.init(width: 1024.0, height: 768.0),
+        .iPadAir : CGSize.init(width: 1024.0, height: 768.0),
+        .iPadMini : CGSize.init(width: 1024.0, height: 768.0),
+        .iPadPro_9_7 : CGSize.init(width: 1024.0, height: 768.0),
+        .iPadPro_12_9 : CGSize.init(width: 1024.0, height: 1366.0)
+    ]
+    fileprivate static let scaleValues : [DeviceType : Double] = [
+        .iPad2 : 1.0,
+        .iPadMini : 2.0,
+        .iPadAir : 2.0,
+        .iPadPro_9_7 : 2.0,
+        .iPadPro_12_9 : 2.0
+    ]
+    
+    enum Equality {
+        case equal
+        case equalOrLess
+        case equalOrGreater
+    }
+
 
     static var deviceType : UIUserInterfaceIdiom {
         return UIDevice.current.userInterfaceIdiom
@@ -41,72 +67,78 @@ class KRDeviceType {
     //MARK: iPhone
     
     static var isiPhone4s : Bool {
-        return isMainScreenEqual(to: CGSize.init(width: 320.0, height: 480.0))
+        return checkDeviceType(deviceType: .iPhone4s)
     }
     
     static var isiPhone5 : Bool {
-        return isMainScreenEqual(to: CGSize.init(width: 320.0, height: 568.0))
+        return checkDeviceType(deviceType: .iPhone5)
     }
     
     static var isiPhone6 : Bool {
-        return isMainScreenEqual(to: CGSize.init(width: 375.0, height: 667.0))
+        return checkDeviceType(deviceType: .iPhone6)
     }
     
     static var isiPhone6Plus : Bool {
-        return isMainScreenEqual(to: CGSize.init(width: 414.0, height: 736.0))
+        return checkDeviceType(deviceType: .iPhone6Plus)
     }
 
     //MARK: iPad
     
     static var isiPad2 : Bool {
-        return self.isiPad(scale: 1, size: CGSize.init(width: 1024, height: 768))
+        return checkDeviceType(deviceType: .iPad2)
     }
     
     static var isiPadMiniOrAir : Bool {
-        return self.isiPad(scale: 2, size: CGSize.init(width: 1024, height: 768))
+        return checkDeviceType(deviceType: .iPadAir)
     }
     
     static var isiPadPro : Bool {
-        return self.isiPad(scale: 2, size: CGSize.init(width: 1024, height: 1366))
-
+        return checkDeviceType(deviceType: .iPadPro_12_9)
+    }
+    
+    fileprivate static func checkDeviceType(deviceType : DeviceType, equalType : Equality = .equal) -> Bool {
+        guard let size = devices[deviceType] else {return false}
+        guard let scale = scaleValues[deviceType] else {
+            return isMainScreenMatches(to: size, equalType: equalType)
+        }
+        return isiPad(scale: Int(scale), size: size)
     }
     
     //MARK: Helpers
     
-    static func isMainScreenEqual(to size : CGSize) -> Bool {
+    static func isMainScreenMatches(to size : CGSize, equalType : Equality = .equal) -> Bool {
         let screenFrame = UIScreen.main.bounds
-        let equal : Bool = (screenFrame.size.height == size.height && screenFrame.size.width == size.width) || (screenFrame.size.height == size.width && screenFrame.size.width == size.height)
-        return equal;
+        var equal : Bool = false
+        switch equalType {
+        case .equal:
+            equal = (screenFrame.size.height == size.height && screenFrame.size.width == size.width) || (screenFrame.size.height == size.width && screenFrame.size.width == size.height)
+        case .equalOrLess:
+            equal = (screenFrame.size.height <= size.height && screenFrame.size.width <= size.width) || (screenFrame.size.height <= size.width && screenFrame.size.width <= size.height)
+        case .equalOrGreater:
+            equal = (screenFrame.size.height >= size.height && screenFrame.size.width >= size.width) || (screenFrame.size.height >= size.width && screenFrame.size.width >= size.height)
+        }
+        return equal
     }
     
-    private static func isiPad(scale : Int, size : CGSize) -> Bool {
+    
+    fileprivate static func isiPad(scale : Int, size : CGSize, equalType : Equality = .equal) -> Bool {
         let scaleEqual : Bool = Int(UIScreen.main.scale) == scale
-        return isMainScreenEqual(to: size) && scaleEqual
+        return isMainScreenMatches(to: size, equalType: equalType) && scaleEqual
     }
+    
 }
 
 //MARK: Operators
 extension KRDeviceType {
     static func == (lhs: KRDeviceType, rhs: DeviceType) -> Bool {
-        switch rhs {
-        case .iPhone:
-            return KRDeviceType.isiPhone
-        case .iPad:
-            return KRDeviceType.isiPad
-        case .iPhone4s:
-            return KRDeviceType.isiPhone4s
-        case .iPhone5:
-            return KRDeviceType.isiPhone5
-        case .iPhone6:
-            return KRDeviceType.isiPhone6
-        case .iPhone6Plus:
-            return KRDeviceType.isiPhone6Plus
-        case .iPad2:
-            return KRDeviceType.isiPad2
-        case .iPadMini, .iPadAir, .iPadPro_9_7:
-            return KRDeviceType.isiPadMiniOrAir
-        case .iPadPro_12_9:
-            return KRDeviceType.isiPadPro
-        }
+        return checkDeviceType(deviceType: rhs, equalType: .equal);
+    }
+    
+    static func <= (lhs : KRDeviceType, rhs : DeviceType) -> Bool {
+        return checkDeviceType(deviceType: rhs, equalType: .equalOrLess);
+    }
+    
+    static func >= (lhs : KRDeviceType, rhs : DeviceType) -> Bool {
+        return checkDeviceType(deviceType: rhs, equalType: .equalOrGreater);
     }
 }

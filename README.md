@@ -16,7 +16,7 @@ Write `import KRDeviceType` in files where you need to use KRDeviceType.
 KRDeviceType should be used only for layout purposes. For example, sometimes you need set different constraints for old devices which screen size doesn't meet requirements of your design project. KRDeviceType class get info about screen size and use this information to check current device type. Don't use this class for accurate detecting of your device type (for example you may wish to check if you device is accurate iPhone 5s);
 
 
-### Operator ==
+### Operators ==, <=, >=
 
 To get current device type you can use == operator of KRDevice with DeviceType enumeration.
 
@@ -32,6 +32,20 @@ If you wish to check if current device is 4.7 inches iPhone (iPhone 6 or iPhone 
 ```swift
 if KRDeviceType() == .iPhone6 {
     // Perform appropiate operations
+}
+```
+
+You can also use equalOrLess("<=") or equalOrGreater(">=") equality operators:
+
+```swift
+if KRDeviceType() <= .iPhone5 {   //iPhone 5/5s/SE of iPhone 4s
+// Perform appropiate operations (for example, set up constraints for those old devices)
+}
+```
+
+```swift
+if KRDeviceType() >= .iPhone6Plus {   //iPhone 5/5s/SE of iPhone 4s
+// Perform appropiate operations for 3x scale devices (not only iPhone 6Plus, but possibly future devices with higher resolutions screens)
 }
 ```
 

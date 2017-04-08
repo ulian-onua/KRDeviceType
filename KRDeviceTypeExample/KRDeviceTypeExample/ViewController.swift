@@ -32,7 +32,7 @@ class ViewController: UIViewController {
             print("iPhone 5 or iPhone 5s or iPhone SE");
         }
         
-        if KRDeviceType.isiPhone6 {
+        if KRDeviceType.isiPhone6 && KRDeviceType() == .iPhone6  {
             print("iPhone 6 or iPhone 6s or iPhone 7");
         }
         
@@ -48,11 +48,18 @@ class ViewController: UIViewController {
             print("iPad Mini or iPad Retina or iPad Air or iPad Air 2 or iPad Pro 9.7")
         }
         
-        if KRDeviceType.isiPadMiniOrAir {
+        if KRDeviceType.isiPadPro {
             print("iPad Pro");
         }
+        
+        if KRDeviceType() <= .iPhone5 {
+            print("iPhone 5/5s/SE or iPhone 4s")
+        }
+        
+        if KRDeviceType() >= .iPhone5 {
+            print("iPhone 5/5s/SE or greater")
+        }
+
     }
-
-
 }
 
