@@ -7,16 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		442F289F1E93C04700D2830A /* KRDeviceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442F289E1E93C04700D2830A /* KRDeviceType.swift */; };
 		449A293D1E93C010004B3657 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449A293C1E93C010004B3657 /* AppDelegate.swift */; };
 		449A293F1E93C010004B3657 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449A293E1E93C010004B3657 /* ViewController.swift */; };
 		449A29421E93C010004B3657 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 449A29401E93C010004B3657 /* Main.storyboard */; };
 		449A29441E93C010004B3657 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 449A29431E93C010004B3657 /* Assets.xcassets */; };
 		449A29471E93C010004B3657 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 449A29451E93C010004B3657 /* LaunchScreen.storyboard */; };
+		B9060C832104CCD500C20BC7 /* KRDeviceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9060C822104CCD500C20BC7 /* KRDeviceType.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		442F289E1E93C04700D2830A /* KRDeviceType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KRDeviceType.swift; path = ../KRDeviceType.swift; sourceTree = "<group>"; };
 		449A29391E93C010004B3657 /* KRDeviceTypeExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KRDeviceTypeExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		449A293C1E93C010004B3657 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		449A293E1E93C010004B3657 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -24,6 +23,7 @@
 		449A29431E93C010004B3657 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		449A29461E93C010004B3657 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		449A29481E93C010004B3657 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B9060C822104CCD500C20BC7 /* KRDeviceType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KRDeviceType.swift; path = ../../Source/KRDeviceType.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,7 +56,7 @@
 		449A293B1E93C010004B3657 /* KRDeviceTypeExample */ = {
 			isa = PBXGroup;
 			children = (
-				442F289E1E93C04700D2830A /* KRDeviceType.swift */,
+				B9060C822104CCD500C20BC7 /* KRDeviceType.swift */,
 				449A293C1E93C010004B3657 /* AppDelegate.swift */,
 				449A293E1E93C010004B3657 /* ViewController.swift */,
 				449A29401E93C010004B3657 /* Main.storyboard */,
@@ -141,7 +141,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				449A293F1E93C010004B3657 /* ViewController.swift in Sources */,
-				442F289F1E93C04700D2830A /* KRDeviceType.swift in Sources */,
+				B9060C832104CCD500C20BC7 /* KRDeviceType.swift in Sources */,
 				449A293D1E93C010004B3657 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
