@@ -28,7 +28,7 @@ if KRDeviceType() == .iPhone {
 }
 ```
 
-If you wish to check if current device is 4.7 inches iPhone (iPhone 6 or iPhone 6s or iPhone 7):
+If you wish to check if current device is 4.7 inches iPhone (iPhone 6 or iPhone 6s or iPhone 7 or iPhone 8):
 ```swift
 if KRDeviceType() == .iPhone6 {
     // Perform appropiate operations
@@ -44,8 +44,8 @@ if KRDeviceType() <= .iPhone5 {   //iPhone 5/5s/SE of iPhone 4s
 ```
 
 ```swift
-if KRDeviceType() >= .iPhone6Plus {   //iPhone 6 Plus/ 6s Plus/ 7 Plus or greater
-// Perform appropiate operations for 3x scale devices (not only iPhone 6Plus, but possibly future devices with higher resolutions screens)
+if KRDeviceType() >= .iPhone6Plus {   //iPhone 6 Plus / 6s Plus / 7 Plus / 8 Plus or greater
+// Perform appropiate operations for 3x scale devices (not only iPhone 6 Plus, but possible future devices with higher resolutions screens)
 }
 ```
 
@@ -53,18 +53,24 @@ if KRDeviceType() >= .iPhone6Plus {   //iPhone 6 Plus/ 6s Plus/ 7 Plus or greate
 To get current device type you can use one of next static variables:
 
 ```swift
-static var isiPhone : Bool // return true if device is iPhone
-static var isiPad : Bool // return true if device is iPad
+open class var isiPhone: Bool // return true if device is iPhone
+open class var isiPad: Bool // return true if device is iPad
 
 // get device type by checking its screen size
-static var isiPhone4s : Bool // iPhone 4s or iPhone 4
-static var isiPhone5 : Bool // iPhone 5 or iPhone 5s or iPhone SE
-static var isiPhone6 : Bool // iPhone 6 or iPhone 6s or iPhone 7
-static var isiPhone6Plus : Bool // iPhone 6 Plus or iPhone 6s Plus or iPhone 7s Plus
+open class var isiPhone4s: Bool // iPhone 4s or iPhone 4
+open class var isiPhone5: Bool // iPhone 5 or iPhone 5s or iPhone SE
+open class var isiPhone6: Bool // iPhone 6 or iPhone 6s or iPhone 7 or iPhone 8
+open class var isiPhone6Plus: Bool // iPhone 6 Plus or iPhone 6s Plus or iPhone 7s Plus or iPhone 8 Plus
+open class var isiPhoneX: Bool // iPhone X or iPhone XS
+open class var isiPhoneXr: Bool // iPhone XR
+open class var isiPhoneXsMax: Bool // iPhone XS Max
 
-static var isiPad2 : Bool // iPad 2
-static var isiPadMiniOrAir : Bool  // iPad Mini or iPad Retina or iPad Air or iPad Air 2 or iPad Pro 9.7
-static var isiPadPro : Bool // iPad Pro 12.9
+open class var isiPad2: Bool // iPad 2
+open class var isiPadMiniOrAir: Bool  // iPad Mini or iPad Retina or iPad Air or iPad Air 2 
+open class var isiPadPro9: Bool // iPad Pro 9.7
+open class var isiPadPro12: Bool // iPad Pro 12.9
+open class var isiPadPro10: Bool // iPad Pro 10.5 (2017)
+open class var isiPadPro10: Bool // iPad Pro 11 (2018)
 ```
 For example:
 
